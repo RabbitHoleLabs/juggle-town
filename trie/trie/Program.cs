@@ -42,14 +42,28 @@ namespace Laboratory
                 trie.Insert(word[1], wordWeight);
             }
 
-            Node prefix = trie.Prefix("the");
-            Console.WriteLine(prefix.Value);
-            Console.WriteLine(prefix.Weight);
-            Console.WriteLine(prefix.Depth);
-            foreach (var child in prefix.Children)
+            string currInput;
+            string currWord = "";
+            while ((currInput = Console.ReadLine()) != "")
             {
-                Console.WriteLine("child " + child.Value + " weight " + child.Weight);
+                if (currInput == " ")
+                {
+                    currWord = "";
+                }
+                else
+                {
+                    currWord += currInput;
+                    Console.WriteLine(currWord);
+                    Node prefix = trie.Prefix(currWord);
+                    Console.WriteLine(prefix.Weight);
+                    Console.WriteLine(prefix.Depth);
+                    foreach (var child in prefix.Children)
+                    {
+                        Console.WriteLine("child " + child.Value + " weight " + child.Weight);
+                    }
+                }
             }
+            
             
 
             Console.Read();
